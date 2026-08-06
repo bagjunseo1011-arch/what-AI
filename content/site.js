@@ -5,8 +5,8 @@
 module.exports = {
   name: '어떤AI',
   tagline: '상황을 적으면, 그 상황에 맞는 AI를 찾아드립니다',
-  // ↓↓↓ 배포 도메인으로 교체하세요 (끝에 / 없이) ↓↓↓
-  url: 'https://eotteon-ai.example.com',
+  // 배포 도메인 (끝에 / 없이). 커스텀 도메인을 붙이면 여기만 바꾸고 다시 빌드하세요.
+  url: 'https://what-ai-kappa.vercel.app',
   description:
     '“이 상황엔 어떤 AI가 좋지?” 상황을 한 줄로 적으면 ChatGPT·Claude·Gemini 등 18개 AI 중 맞는 도구를 추천하고, 각 AI의 강점과 구독 요금제를 비교해 드립니다.',
   locale: 'ko_KR',

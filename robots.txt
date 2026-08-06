@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://eotteon-ai.example.com/sitemap.xml
+Sitemap: https://what-ai-kappa.vercel.app/sitemap.xml
