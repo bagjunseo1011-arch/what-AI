@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://what-ai-kappa.vercel.app/sitemap.xml
+Sitemap: https://www.what-ai.kr/sitemap.xml
