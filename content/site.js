@@ -16,7 +16,12 @@ module.exports = {
   priceCheckedAt: '2026-08-06',
   // 애드센스 승인 후 발급받은 값으로 교체하면 전 페이지에 자동 삽입됩니다. 빈 문자열이면 미삽입.
   adsensePublisherId: '',
-  // 검색 콘솔 HTML 태그 인증을 쓸 경우 content 값만 넣으세요. 빈 문자열이면 미삽입.
-  googleSiteVerification: '',
-  naverSiteVerification: '',
+  // 검색 콘솔 HTML 태그 인증. content 값(= 뒤쪽 토큰)만 넣습니다. 빈 문자열이면 미삽입.
+  // ※ 도메인 속성(DNS)으로 등록했다면 가비아 DNS 에 TXT 레코드도 따로 넣어야 합니다.
+  //    호스트 @ / 값 google-site-verification=<아래 토큰>
+  googleSiteVerification: '8mLB0OMoNGUAf3OAXILM_eG8qnlCvk2xznEvFGUyaTg',
+
+  // 네이버는 메타 태그 방식과 HTML 파일 방식 중 하나를 씁니다. 쓰는 쪽만 채우세요.
+  naverSiteVerification: '',                                            // 메타 태그 방식
+  naverVerificationFile: 'naver3b77233c2154ccd4a572c4095a69e473.html',  // HTML 파일 방식
 };

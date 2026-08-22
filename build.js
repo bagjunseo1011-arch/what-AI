@@ -182,6 +182,7 @@ function layout({ title, description, canonical, body, current, jsonld = [], bod
     site.naverSiteVerification && `<meta name="naver-site-verification" content="${esc(site.naverSiteVerification)}">`,
   ].filter(Boolean).join('\n  ');
 
+
   return `<!doctype html>
 <html lang="ko">
 <head>
@@ -955,6 +956,20 @@ function buildData() {
   );
 }
 
+/**
+ * 네이버 서치어드바이저의 HTML 파일 인증.
+ * 파일명 그대로 루트에 두고, 내용은 확장자를 뗀 파일명 한 줄이면 됩니다(네이버 고정 형식).
+ */
+function buildNaverVerification() {
+  if (!site.naverVerificationFile) return;
+  const token = site.naverVerificationFile.replace(/\.html$/, '');
+  fs.writeFileSync(
+    path.join(OUT, site.naverVerificationFile),
+    `naver-site-verification: ${token}.html`,
+    'utf8'
+  );
+}
+
 function buildSitemap() {
   const today = new Date().toISOString().slice(0, 10);
   const urls = BUILT.map((p) =>
@@ -1003,6 +1018,7 @@ function main() {
   buildStaticPages();
   buildData();
   buildSitemap();
+  buildNaverVerification();
 
   const contentPages = tools.length + guides.length + compares.length;
   console.log('빌드 완료');
