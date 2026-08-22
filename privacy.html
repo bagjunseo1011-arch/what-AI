@@ -13,13 +13,23 @@
   <meta property="og:description" content="어떤AI가 수집하는 정보, 쿠키 및 광고 사용, 이용자의 선택권을 안내합니다.">
   <meta property="og:url" content="https://www.what-ai.kr/privacy.html">
   <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://www.what-ai.kr/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="어떤AI — 상황을 적으면, 그 상황에 맞는 AI를 찾아드립니다">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="개인정보처리방침 | 어떤AI">
   <meta name="twitter:description" content="어떤AI가 수집하는 정보, 쿠키 및 광고 사용, 이용자의 선택권을 안내합니다.">
+  <meta name="twitter:image" content="https://www.what-ai.kr/assets/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='20'>N</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <!-- 폰트는 렌더를 막지 않게 비동기로 불러옵니다.
+       동기 로드 시 이 요청 하나가 486ms 동안 첫 페인트를 붙잡고 있었습니다.
+       본문이 한글이라 Inter 는 라틴 글자에만 적용돼 늦게 와도 체감 변화가 적습니다. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://www.what-ai.kr/"},{"@type":"ListItem","position":2,"name":"개인정보처리방침","item":"https://www.what-ai.kr/privacy.html"}]}</script>
@@ -78,7 +88,7 @@
       <p>사이트는 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
 
       <h2>8. 방침 변경</h2>
-      <p>본 방침이 변경될 경우 이 페이지를 통해 공지합니다. 문의는 <a href="mailto:hello@example.com">hello@example.com</a>로 주시기 바랍니다.</p></article>
+      <p>본 방침이 변경될 경우 이 페이지를 통해 공지합니다. 문의는 <a href="mailto:bagjunseo1011@gmail.com">bagjunseo1011@gmail.com</a>로 주시기 바랍니다.</p></article>
   </div>
 </div>
   </main>

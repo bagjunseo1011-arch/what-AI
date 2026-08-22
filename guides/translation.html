@@ -13,13 +13,23 @@
   <meta property="og:description" content="비즈니스 메일, 계약서, 논문 번역에 맞는 AI와, 번역 결과를 검증하는 방법을 정리했습니다.">
   <meta property="og:url" content="https://www.what-ai.kr/guides/translation.html">
   <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://www.what-ai.kr/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="어떤AI — 상황을 적으면, 그 상황에 맞는 AI를 찾아드립니다">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="번역에 좋은 AI | 어떤AI">
   <meta name="twitter:description" content="비즈니스 메일, 계약서, 논문 번역에 맞는 AI와, 번역 결과를 검증하는 방법을 정리했습니다.">
+  <meta name="twitter:image" content="https://www.what-ai.kr/assets/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='20'>N</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <!-- 폰트는 렌더를 막지 않게 비동기로 불러옵니다.
+       동기 로드 시 이 요청 하나가 486ms 동안 첫 페인트를 붙잡고 있었습니다.
+       본문이 한글이라 Inter 는 라틴 글자에만 적용돼 늦게 와도 체감 변화가 적습니다. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://www.what-ai.kr/"},{"@type":"ListItem","position":2,"name":"상황별 가이드","item":"https://www.what-ai.kr/guides/"},{"@type":"ListItem","position":3,"name":"번역에 좋은 AI","item":"https://www.what-ai.kr/guides/translation.html"}]},{"@type":"Article","headline":"번역: 어색하면 곤란한 문서일 때","description":"비즈니스 메일, 계약서, 논문 번역에 맞는 AI와, 번역 결과를 검증하는 방법을 정리했습니다.","inLanguage":"ko","author":{"@type":"Organization","name":"어떤AI"},"publisher":{"@type":"Organization","name":"어떤AI"},"mainEntityOfPage":"https://www.what-ai.kr/guides/translation.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"DeepL과 ChatGPT 중 뭘 써야 하나요?","acceptedAnswer":{"@type":"Answer","text":"문서를 통째로 빠르게 처리해야 하면 DeepL, 문장 하나를 뉘앙스까지 따져 다듬어야 하면 ChatGPT나 Claude입니다. 실무에서는 DeepL로 초벌을 돌리고 어색한 문장만 대화형 AI로 손보는 조합이 가장 효율적입니다."}}]}]}</script>

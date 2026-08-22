@@ -11,7 +11,7 @@ module.exports = {
     '“이 상황엔 어떤 AI가 좋지?” 상황을 한 줄로 적으면 ChatGPT·Claude·Gemini 등 18개 AI 중 맞는 도구를 추천하고, 각 AI의 강점과 구독 요금제를 비교해 드립니다.',
   locale: 'ko_KR',
   // 애드센스 심사에는 실제 연락 수단이 필요합니다. 본인 이메일로 교체하세요.
-  email: 'hello@example.com',
+  email: 'bagjunseo1011@gmail.com',
   // 요금제 정보 기준일. 데이터 갱신할 때마다 함께 수정하세요.
   priceCheckedAt: '2026-08-06',
   // 애드센스 승인 후 발급받은 값으로 교체하면 전 페이지에 자동 삽입됩니다. 빈 문자열이면 미삽입.

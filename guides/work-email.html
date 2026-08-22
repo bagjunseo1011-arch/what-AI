@@ -13,13 +13,23 @@
   <meta property="og:description" content="메일 답장, 회의록 정리, 일정 조율처럼 반복되는 사무 업무를 줄여 주는 AI를 정리했습니다.">
   <meta property="og:url" content="https://www.what-ai.kr/guides/work-email.html">
   <meta property="og:locale" content="ko_KR">
+  <meta property="og:image" content="https://www.what-ai.kr/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="어떤AI — 상황을 적으면, 그 상황에 맞는 AI를 찾아드립니다">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="이메일·업무 처리에 좋은 AI | 어떤AI">
   <meta name="twitter:description" content="메일 답장, 회의록 정리, 일정 조율처럼 반복되는 사무 업무를 줄여 주는 AI를 정리했습니다.">
+  <meta name="twitter:image" content="https://www.what-ai.kr/assets/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='20'>N</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <!-- 폰트는 렌더를 막지 않게 비동기로 불러옵니다.
+       동기 로드 시 이 요청 하나가 486ms 동안 첫 페인트를 붙잡고 있었습니다.
+       본문이 한글이라 Inter 는 라틴 글자에만 적용돼 늦게 와도 체감 변화가 적습니다. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/style.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://www.what-ai.kr/"},{"@type":"ListItem","position":2,"name":"상황별 가이드","item":"https://www.what-ai.kr/guides/"},{"@type":"ListItem","position":3,"name":"이메일·업무 처리에 좋은 AI","item":"https://www.what-ai.kr/guides/work-email.html"}]},{"@type":"Article","headline":"업무: 메일과 잡무에 시간을 뺏길 때","description":"메일 답장, 회의록 정리, 일정 조율처럼 반복되는 사무 업무를 줄여 주는 AI를 정리했습니다.","inLanguage":"ko","author":{"@type":"Organization","name":"어떤AI"},"publisher":{"@type":"Organization","name":"어떤AI"},"mainEntityOfPage":"https://www.what-ai.kr/guides/work-email.html"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"회사 메일 내용을 AI에 넣어도 되나요?","acceptedAnswer":{"@type":"Answer","text":"회사 정책 확인이 먼저입니다. 많은 기업이 개인 계정 AI 사용을 제한하고 사내 승인된 도구만 허용합니다. 고객 정보가 든 메일은 특히 주의가 필요합니다."}}]}]}</script>

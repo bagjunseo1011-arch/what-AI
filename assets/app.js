@@ -52,12 +52,25 @@
       var out = window.recommendTools(query, DATA, 4);
 
       if (!out.results.length) {
+        // 막다른 길을 만들지 않습니다. 링크 하나만 주면 대부분 여기서 이탈하므로,
+        // 많이 쓰는 도구와 가이드를 바로 눌러 볼 수 있게 함께 보여 줍니다.
+        var popular = DATA.tools.slice()
+          .sort(function (a, b) { return b.popularity - a.popularity; })
+          .slice(0, 3);
+        var guideLinks = DATA.guides.slice(0, 4).map(function (g) {
+          return '<a class="btn btn--ghost btn--sm" href="/guides/' + g.slug + '.html">' + esc(g.title) + '</a>';
+        }).join(' ');
+
         box.innerHTML =
           '<div class="results__head"><h2>딱 맞는 결과를 못 찾았어요</h2></div>' +
           '<div class="results__empty"><p>조금 더 구체적으로 적어 보세요. ' +
           '예: “회사 보고서를 써야 하는데 목차부터 막힌다”</p>' +
-          '<a class="btn btn--outline" href="/tools/">전체 도구 둘러보기</a></div>';
+          (guideLinks ? '<p style="margin-bottom:0">상황별로 골라 보기: ' + guideLinks + '</p>' : '') +
+          '</div>' +
+          '<h3 style="margin:24px 0 12px;font-size:1rem">많이 쓰는 AI</h3>' +
+          '<div class="grid">' + popular.map(function (t) { return toolCard(t); }).join('') + '</div>';
         box.hidden = false;
+        box.scrollIntoView({ behavior: 'smooth', block: 'start' });
         return;
       }
 
@@ -90,6 +103,16 @@
       // 결과를 공유·북마크할 수 있게 주소창에 남긴다 (페이지 이동 없음)
       history.replaceState(null, '', '?q=' + encodeURIComponent(q));
       render(q);
+    });
+
+    // textarea 라 Enter 가 기본은 줄바꿈입니다. 대부분은 다 적고 Enter 를 누르는데
+    // 아무 반응이 없으면 그대로 이탈하므로, Enter = 실행 / Shift+Enter = 줄바꿈 으로 바꿉니다.
+    // (한글 입력 조합 중(isComposing)에는 무시해야 마지막 글자가 잘리지 않습니다)
+    input.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' || e.shiftKey || e.isComposing || e.keyCode === 229) return;
+      e.preventDefault();
+      if (form.requestSubmit) form.requestSubmit();
+      else form.dispatchEvent(new Event('submit', { cancelable: true }));
     });
 
     // 예시 칩 클릭 → 입력창에 채우고 바로 추천

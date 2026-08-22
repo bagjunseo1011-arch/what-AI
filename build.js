@@ -21,9 +21,17 @@ const tools = require('./content/tools');
 const guides = require('./content/guides');
 const compares = require('./content/compares');
 const { CATEGORIES, SORTS } = require('./content/taxonomy');
+const { ensureOgImage } = require('./og-image');
 
 const OUT = __dirname;
 const BUILT = []; // sitemap 생성을 위해 만든 페이지 경로를 모아 둡니다
+
+/**
+ * 공유 썸네일 정보. main() 첫머리에서 실제 파일을 보고 채웁니다.
+ * layout() 이 og:image:width/height 에 이 값을 그대로 쓰기 때문에
+ * 상수가 아니라 파일에서 읽은 실측값이어야 합니다.
+ */
+let OG = { created: false, width: 0, height: 0 };
 
 /* ============================================================
    1. 유틸
@@ -189,13 +197,23 @@ function layout({ title, description, canonical, body, current, jsonld = [], bod
   <meta property="og:description" content="${esc(description)}">
   <meta property="og:url" content="${esc(url)}">
   <meta property="og:locale" content="${esc(site.locale)}">
+  <meta property="og:image" content="${esc(site.url)}/assets/og.png">${OG.width && OG.height ? `
+  <meta property="og:image:width" content="${OG.width}">
+  <meta property="og:image:height" content="${OG.height}">` : ''}
+  <meta property="og:image:alt" content="${esc(site.name)} — ${esc(site.tagline)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="${esc(fullTitle)}">
   <meta name="twitter:description" content="${esc(description)}">
+  <meta name="twitter:image" content="${esc(site.url)}/assets/og.png">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><text y='19' font-size='20'>N</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <!-- 폰트는 렌더를 막지 않게 비동기로 불러옵니다.
+       동기 로드 시 이 요청 하나가 486ms 동안 첫 페인트를 붙잡고 있었습니다.
+       본문이 한글이라 Inter 는 라틴 글자에만 적용돼 늦게 와도 체감 변화가 적습니다. -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"></noscript>
   <link rel="stylesheet" href="/assets/tokens.css">
   <link rel="stylesheet" href="/assets/style.css">
   ${ld}
@@ -284,6 +302,7 @@ function recommendWidget() {
   <form id="finder-form" class="finder__box">
     <label class="finder__label" for="finder-input">어떤 상황에서 막히고 있나요?</label>
     <textarea id="finder-input" name="q" placeholder="예) 거래처에 보낼 영어 메일을 써야 하는데 번역투가 어색하다" required></textarea>
+    <p class="finder__hint">Enter 로 바로 찾기 · 줄바꿈은 Shift + Enter</p>
     <div class="finder__actions">
       <button class="btn" type="submit">${icon('search', 'icon--sm')} 맞는 AI 찾기</button>
       <a class="btn btn--ghost" href="/tools/">전체 ${tools.length}개 도구 보기</a>
@@ -970,6 +989,10 @@ function main() {
     if (!byslug(c.a) || !byslug(c.b)) throw new Error(`compare ${c.a}-vs-${c.b}: 없는 도구 slug`);
   });
 
+  // 페이지를 그리기 전에 실행해야 합니다 — layout() 이 OG.width/height 를 읽어 씁니다.
+  // 이미 파일이 있으면 만들지 않고 그 파일의 실제 크기를 읽어 옵니다.
+  OG = ensureOgImage(path.join(OUT, 'assets/og.png'));
+
   buildHome();
   buildToolsIndex();
   tools.forEach(buildToolPage);
@@ -986,6 +1009,8 @@ function main() {
   console.log(`  전체 페이지 ${BUILT.length + 1}개 (sitemap 등록 ${BUILT.length}개 + 404)`);
   console.log(`  └ 콘텐츠 페이지 ${contentPages}개 (도구 ${tools.length} / 가이드 ${guides.length} / 비교 ${compares.length})`);
   console.log(`  사이트 주소: ${site.url}   ← content/site.js 에서 변경`);
+  console.log(`  OG 이미지: assets/og.png ${OG.created ? '새로 생성' : '기존 파일 유지'} ` +
+    (OG.width ? `(${OG.width}x${OG.height})` : '(PNG 아님 → 크기 메타 생략)'));
 }
 
 main();
